@@ -1,0 +1,30 @@
+<dir class="container">
+    <dir>
+        <h1>
+            잠재적 피해액 :
+            <span class="result_span" id="PotentialDamage_Result"
+                onclick="PotentialDamage()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 입력 -->
+    <dir>
+        <!-- 각 항목 -->
+        <dir>
+            <span>침해 사고에 의한 주가변동률</span>
+            <input type="text" id='SharePriceFluctuationRateDueToInfringementAccident'
+                onkeyup="PotentialDamage()" />
+        </dir>
+        <dir>
+            <span>주식가격</span>
+            <input type="text" id='StokePrice' onkeyup="PotentialDamage()" />
+        </dir>
+        <dir>
+            <span>상장 주식수</span>
+            <input type="text" id='NumberOfListedShares' onkeyup="PotentialDamage()" />
+        </dir>
+    </dir>
+</dir>

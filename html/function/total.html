@@ -1,0 +1,22 @@
+<dir class="container">
+    <dir>
+        <h1>
+            총 피해액 :
+            <span class="result_span" id="TotalAmountOfDamage_Result"
+                onclick="TotalAmountOfDamage()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 입력 -->
+    <dir>
+        <!-- 각 항목 -->
+        <dir>
+            <span>예방비</span>
+            <input type="text" id='PreventiveCost'
+                onkeyup="TotalAmountOfDamage()" />
+        </dir>
+    </dir>
+</dir>

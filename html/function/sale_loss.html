@@ -1,0 +1,59 @@
+<!-- 매출 이익 손실 비용 -->
+<dir class="container">
+    <dir>
+        <h1>
+            매출 이익 손실 비용 :
+            <span class="result_span" id="LossOfProfitFromSales_Result" onclick="LossOfProfitFromSales()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 인터넷에 의한 시간당 이익 -->
+    <dir>
+        <h3>
+            인터넷에 의한 시간당 이익 :
+            <span class="result_span" id="ProfitPerHourByTheInternet_Result">
+                모든 항목을 입력하시오
+            </span>
+            (원)
+        </h3>
+        <!-- 입력 -->
+        <dir>
+            <!-- 각 항목 -->
+            <dir>
+                <span>연간 매출</span>
+                <input type="text" id='AnnualSales'
+                    onkeyup="ProfitPerHourByTheInternet(),LossOfProfitFromSales()" />
+            </dir>
+            <dir>
+                <span>매출 영업 이익률</span>
+                <input type="text" id='SalesOperatingProfitRatio' onkeyup="ProfitPerHourByTheInternet(),LossOfProfitFromSales()" />
+            </dir>
+            <dir>
+                <span>인터넷 의존도</span>
+                <input type="text" id='InternetDependence'
+                    onkeyup="ProfitPerHourByTheInternet(),LossOfProfitFromSales()" />
+            </dir>
+            <dir>
+                <span>연간 인터넷 영업 시간</span>
+                <input type="text" id='AnnualInternetBusinessHours' onkeyup="ProfitPerHourByTheInternet(),LossOfProfitFromSales()" />
+            </dir>
+        </dir>
+        <!-- 그 외 입력 -->
+        <dir>
+            <!-- 각 항목 -->
+            <dir>
+                <span>피해시간</span>
+                <input type="text" id='DamageTime'
+                    onkeyup="LossOfProfitFromSales()" />
+            </dir>
+            <dir>
+                <span>침해사고 영향도</span>
+                <input type="text" id='InfringementAccidentImpactMap'
+                    onkeyup="LossOfProfitFromSales()" />
+            </dir>
+        </dir>
+    </dir>
+</dir>

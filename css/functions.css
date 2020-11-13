@@ -1,0 +1,16 @@
+*{
+    margin: 0 auto;
+    padding: 10px;
+    /* border: solid black 1px; */
+
+}
+
+.container{
+    border: solid red 5px;
+}
+
+
+.result_span{
+    padding-left: 0;
+    padding-right: 0;
+}

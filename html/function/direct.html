@@ -1,0 +1,64 @@
+<dir class="container">
+    <dir>
+        <h1>
+            직접적 피해액 :
+            <span class="result_span" id="DirectDamageAmount_Result" onclick="DirectDamageAmount()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 소프트웨어 회복 비용 -->
+    <dir>
+        <h3>
+            소프트웨어 회복 비용 :
+            <span class="result_span" id="SoftwareRecoveryCost_Result">
+                모든 항목을 입력하시오
+            </span>
+            (원)
+        </h3>
+        <!-- 입력 -->
+        <dir>
+            <!-- 각 항목 -->
+            <dir>
+                <span>피해 시스템 수 (대)</span>
+                <input type="text" id='NumberOfDamageSystems'
+                    onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+            </dir>
+            <dir>
+                <span>복구 소요 시간</span>
+                <input type="text" id='RecoveryTime' onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+            </dir>
+            <dir>
+                <span>복구 투입 인원</span>
+                <input type="text" id='RecoveryInputPersonnel'
+                    onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+            </dir>
+            <dir>
+                <span>시간당 임금 (원)</span>
+                <input type="text" id='HourlyWage' onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+            </dir>
+        </dir>
+    </dir>
+
+    <!-- 하드웨어 대체 비용 -->
+    <dir>
+        <h3>
+            하드웨어 대체 비용 :
+            <span class="result_span" id="HardwareReplacementCost_Result">
+                모든 항목을 입력하시오
+            </span>
+            (원)
+        </h3>
+        <!-- 입력 -->
+        <dir>
+            <!-- 각 항목 -->
+            <dir>
+                <span>피해 시스템 수 (대)</span>
+                <input type="text" id='NumberOfDamageSystems_HW'
+                    onkeyup="HardwareReplacementCost(),DirectDamageAmount()" />
+            </dir>
+        </dir>
+    </dir>
+</dir>

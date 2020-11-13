@@ -1,0 +1,35 @@
+<dir class="container">
+    <dir>
+        <h1>
+            생산효율 저하로 인한 손실액 :
+            <span class="result_span" id="AmountOfLossDueToReducedProductionEfficiency_Result"
+                onclick="AmountOfLossDueToReducedProductionEfficiency()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 입력 -->
+    <dir>
+        <!-- 각 항목 -->
+        <dir>
+            <span>사고로 영향을 받은 직원 수</span>
+            <input type="text" id='NumberOfAccidentAffectedEmployees'
+                onkeyup="AmountOfLossDueToReducedProductionEfficiency()" />
+        </dir>
+        <dir>
+            <span>시간당 생산성</span>
+            <input type="text" id='ProductivityPerHour' onkeyup="AmountOfLossDueToReducedProductionEfficiency()" />
+        </dir>
+        <dir>
+            <span>피해시간</span>
+            <input type="text" id='DamageTime' onkeyup="AmountOfLossDueToReducedProductionEfficiency()" />
+        </dir>
+        <dir>
+            <span>생산효율 저하비율</span>
+            <input type="text" id='RateOfDegradationOfProductionEfficiency'
+                onkeyup="AmountOfLossDueToReducedProductionEfficiency()" />
+        </dir>
+    </dir>
+</dir>

@@ -1,0 +1,30 @@
+<dir class="container">
+    <dir>
+        <h1>
+            복구불능 데이터의 가치 (데이터 재생산 비용) :
+            <span class="result_span" id="TheValueOfUnrecoverableData_Result"
+                onclick="TheValueOfUnrecoverableData()">
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 입력 -->
+    <dir>
+        <!-- 각 항목 -->
+        <dir>
+            <span>복구불능 데이터의 양</span>
+            <input type="text" id='AmountOfIrrecoverableData'
+                onkeyup="TheValueOfUnrecoverableData()" />
+        </dir>
+        <dir>
+            <span>데이터별 평균 재생산소요시간</span>
+            <input type="text" id='AverageReproductionTimeByData' onkeyup="TheValueOfUnrecoverableData()" />
+        </dir>
+        <dir>
+            <span>재생산 인력의 시간당 인건비</span>
+            <input type="text" id='HourlyLaborCostsForReproduciblePersonnel' onkeyup="TheValueOfUnrecoverableData()" />
+        </dir>
+    </dir>
+</dir>
