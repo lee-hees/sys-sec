@@ -31,40 +31,27 @@
 
 <body>
 
-    
-    
+
+
     <div class="box1">
         <div class="box2">
-            
+
             <dir id="direct">직접적 피해액</dir>
-            <!-- <dir id="sale_loss">매출 이익 손실 비용</dir> -->
-            <!-- <dir id="reduced_production">생산효율 저하로 인한 손실액</dir> -->
-            <!-- <dir id="reproduction">데이터 재생산 비용</dir> -->
-            <!-- <dir id="potential">잠재적 피해</dir> -->
-        
-            <!-- <dir id="total">총 피해액</dir> -->
 
             <div id="submit">
-                <input style="zoom:2" type="button" value="확인버튼">
+                <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
             </div>
 
         </div>
     </div>
-    <script>
-        var clicked = 1;
 
-        function fun1() {
-            clicked += 1;
-            if (clicked % 2 == 0) {
-                document.getElementById("list1").style.display = "block";
-                document.getElementById("list2").style.display = "block";
-            }
-            else {
-                document.getElementById("list1").style.display = "none";
-                document.getElementById("list2").style.display = "none";
+    <script>
+        function submit() {
+            if (DirectDamageAmount() != null) {
+                var data = DirectDamageAmount();
+                window.open("potential_op.html?val=" + data, "_self");
             }
         }
-
     </script>
 
 

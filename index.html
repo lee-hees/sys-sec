@@ -53,19 +53,19 @@
                 <div id="question2">
                     <div class="choose-show">
                         <div class="box3">
-                            <input style="zoom:2" type="checkbox"> 가상화폐</input>
+                            <input style="zoom:2" type="radio" onclick="bitcoin()"> 가상화폐</input>
                         </div>
                         <div class="box3">
-                            <input style="zoom:2" type="checkbox"> 개인정보</input>
+                            <input style="zoom:2" type="radio" onclick="privacy()"> 개인정보</input>
                         </div>
                         <div class="box4">
-                            <input style="zoom:2" type="checkbox" onclick="fun1()"> 테러</input>
+                            <input style="zoom:2" type="radio" onclick="fun1()"> 테러</input>
                             <div class="choose-hide">
                                 <div id="list1" class="box4" style="display: none;">
-                                    <input style="zoom:2" type="checkbox"> 시스템</input>
+                                    <input style="zoom:2" type="radio" onclick="system()"> 시스템</input>
                                 </div>
                                 <div id="list2" class="box4" style="display: none;">
-                                    <input style="zoom:2" type="checkbox"> 사이트</input>
+                                    <input style="zoom:2" type="radio" onclick="site()"> 사이트</input>
 
                                 </div>
                             </div>
@@ -76,20 +76,17 @@
             </div>
 
             <div id="submit">
-                <input style="zoom:2" type="button" value="확인버튼">
+                <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
 
-                <a href="html/pages/direct_op.html">1111111</a>
+                <!-- <a href="html/pages/direct_op.html">1111111</a>
                 <a href="html/pages/potential_op.html">2111111</a>
                 <a href="html/pages/reduced_production_op.html">3111111</a>
                 <a href="html/pages/reproduction_op.html">4111111</a>
                 <a href="html/pages/sale_loss_op.html">5111111</a>
-                <a href="html/pages/total_op.html">6111111</a>
+                <a href="html/pages/total_op.html">6111111</a> -->
             </div>
         </div>
     </div>
-
-
-
 
     <script>
         var clicked = 1;
@@ -106,8 +103,49 @@
             }
         }
 
-    </script>
+        // 가상화폐
+        var bitcoin_check = 0;
+        function bitcoin() {
+            bitcoin_check += 1;
+            return bitcoin_check;
+        }
 
+        // 개인정보
+        var privacy_check = 0;
+        function privacy() {
+            privacy_check += 1;
+            return privacy_check;
+        }
+
+        // 시스템
+        var system_check = 0;
+        function system() {
+            system_check += 1;
+            return system_check;
+        }
+
+        // 사이트
+        var site_check = 0;
+        function site() {
+            site_check += 1;
+            return site_check;
+        }
+
+        function submit() {
+            if (bitcoin_check != 0) {
+                window.location.href = "naver.com";
+            }
+            else if (privacy_check != 0) {
+                window.location.href = "google.com";
+            }
+            else if (system_check != 0) {
+                window.location.href = "html/pages/direct_op.html";
+            }
+            else if (site_check != 0) {
+                window.location.href = "site";
+            }
+        }
+    </script>
 
 </body>
 

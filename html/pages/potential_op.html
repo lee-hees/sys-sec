@@ -31,40 +31,60 @@
 
 <body>
 
-    
-    
+
+
     <div class="box1">
         <div class="box2">
-            
+
             <!-- <dir id="direct">직접적 피해액</dir> -->
             <!-- <dir id="sale_loss">매출 이익 손실 비용</dir> -->
             <!-- <dir id="reduced_production">생산효율 저하로 인한 손실액</dir> -->
             <!-- <dir id="reproduction">데이터 재생산 비용</dir> -->
             <dir id="potential">잠재적 피해</dir>
-        
+
             <!-- <dir id="total">총 피해액</dir> -->
 
             <div id="submit">
-                <input style="zoom:2" type="button" value="확인버튼">
+                <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
             </div>
-
+            
         </div>
     </div>
-    <script>
-        var clicked = 1;
+    
+    <input style="display: none;" type="text" id="c" value="ccc">
 
-        function fun1() {
-            clicked += 1;
-            if (clicked % 2 == 0) {
-                document.getElementById("list1").style.display = "block";
-                document.getElementById("list2").style.display = "block";
-            }
-            else {
-                document.getElementById("list1").style.display = "none";
-                document.getElementById("list2").style.display = "none";
+    <script>
+        function submit() {
+            if (PotentialDamage() != null) {
+                var data = eval(PotentialDamage() + "+" + document.getElementById("c").value);
+                window.open("reduced_production_op.html?val=" + data, "_self");
             }
         }
+    </script>
+    <script type="text/javascript">
 
+        function _GET(search) {
+            var obj = {};
+            var uri = decodeURI(search);
+            uri = uri.slice(1, uri.length);
+
+            var param = uri.split('&');
+
+            for (var i = 0; i < param.length; i++) {
+                var devide = param[i].split('=');
+                obj[devide[0]] = devide[1];
+            }
+
+            return obj;
+        }
+
+        window.onload = function () {
+            var search = window.location.search;
+            var getData = _GET(search);
+            var sender = document.querySelector('#c');
+
+            sender.value = getData.val;
+        }
     </script>
 
 

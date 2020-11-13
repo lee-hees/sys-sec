@@ -1,7 +1,7 @@
 /* *{border: 1px black solid;} */
 body{
     margin: 0px;
-    padding: 0;
+    padding: 10px;
 }
 .box1{
     width: 100%;
@@ -13,8 +13,8 @@ body{
 }
 .box2{
     margin-top: 50px;
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 800px;
     border: 10px solid blue;
     display: flex;
     flex-direction: column;
