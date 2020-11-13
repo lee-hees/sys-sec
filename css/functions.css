@@ -10,12 +10,12 @@
 #reproduction,
 #potential,
 #total{
-    height: 85%;
+    height: 90%;
     
 }
 
 .container{
-    height:85%;
+    height:90%;
     /* border: solid red 5px; */
     display: flex;
     flex-direction: column;
