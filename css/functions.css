@@ -2,11 +2,25 @@
     margin: 0 auto;
     padding: 10px;
     /* border: solid black 1px; */
+}
 
+#direct,
+#sale_loss,
+#reduced_production,
+#reproduction,
+#potential,
+#total{
+    height: 85%;
+    
 }
 
 .container{
-    border: solid red 5px;
+    height:85%;
+    /* border: solid red 5px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
