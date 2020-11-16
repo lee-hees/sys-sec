@@ -12,13 +12,13 @@
     <!-- 비용 ',' 찍는 js -->
     <script src="../../../js/addcomma.js"></script>
     <!-- 함수 구현 -->
-    <script src="../../../js/T.js"></script>
+    <script src="../../../js/system.js"></script>
 
     <!-- html 삽입 js -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#sale_loss").load("../../function/sale_loss.html");
+            $("#sale_loss").load("../../function/system/sale_loss.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
     </script>
@@ -40,6 +40,7 @@
             <!-- <dir id="total">총 피해액</dir> -->
 
             <div id="submit">
+                <input style="zoom:2" type="button" value="건너뛰기" onclick="skip()">
                 <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
             </div>
 
@@ -50,6 +51,11 @@
 
 
     <script>
+        function skip() {
+            var data = (0 + "+" + document.getElementById("c").value);
+            window.open("total_op.html?val=" + data, "_self");
+        }
+
         function submit() {
             if (LossOfProfitFromSales() != null) {
                 var data = (LossOfProfitFromSales() + "+" + document.getElementById("c").value);

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../../css/functions.css">
+    <link rel="stylesheet" href="../../../css/question_box.css">
+
+    <!-- 비용 ',' 찍는 js -->
+    <script src="../../../js/addcomma.js"></script>
+    <!-- 함수 구현 -->
+    <script src="../../../js/system.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#result").load("../../function/system/result.html");
+            //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box1">
+        <div class="box2">
+
+            <div style="width: 100%;" id="result"></div>
+
+            <div id="submit">
+                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick=""></div>
+                <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
+                <div id="button3"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
+
+    <script>
+
+        function _GET(search) {
+            var obj = {};
+            var uri = decodeURI(search);
+            uri = uri.slice(1, uri.length);
+
+            var param = uri.split('&');
+
+            for (var i = 0; i < param.length; i++) {
+                var devide = param[i].split('=');
+                obj[devide[0]] = devide[1];
+            }
+
+            return obj;
+        }
+
+        var arr = new Array();
+        var dataa;
+
+        window.onload = function () {
+            var search = window.location.search;
+            var getData = _GET(search);
+            var sender = document.querySelector('#c');
+
+            sender.value = getData.val;
+            dataa=sender.value;
+
+            var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+            // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
+            // alert(arr[7]);   // ["aa", "bb", "cc", "dd", "ee"]
+            // alert(arr[8]);   // ["aa", "bb", "cc", "dd", "ee"]
+            // alert(arr[9]);   // ["aa", "bb", "cc", "dd", "ee"]
+            // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+
+
+            document.getElementById("system_result_1").textContent = ": " + addComma(arr[5]);
+            document.getElementById("system_result_2").textContent = ": " + addComma(arr[4]);
+            document.getElementById("system_result_3").textContent = ": " + addComma(arr[3]);
+            document.getElementById("system_result_4").textContent = ": " + addComma(arr[2]);
+            document.getElementById("system_result_5").textContent = ": " + addComma(arr[1]);
+            document.getElementById("system_result_6").textContent = ": " + addComma(arr[0]);
+            document.getElementById("system_result_7").textContent = ": " + addComma(eval(
+                (arr[0]) + "+" +
+                (arr[1]) + "+" +
+                (arr[2]) + "+" +
+                (arr[3]) + "+" +
+                (arr[4]) + "+" +
+                (arr[5])
+            ));
+
+            if (arr[9] == 0) {
+                // alert("더 없음");
+                document.getElementById("button1").style.display = "block";
+                document.getElementById("button2").style.display = "block";
+                document.getElementById("button3").style.display = "none";
+            }
+            else {
+                // alert("더 있음");
+                document.getElementById("button1").style.display = "none";
+                document.getElementById("button2").style.display = "none";
+                document.getElementById("button3").style.display = "block";
+            }
+        }
+
+        function goto___() {
+
+        }
+
+        function gotoResult() {
+            window.open("../Result.html?val="+dataa, "_self");
+        }
+
+        function gotosite() {
+            var data = dataa;
+            window.open("../site/site_op.html?val=" + data, "_self");
+        }
+    </script>
+
+</body>
+
+</html>

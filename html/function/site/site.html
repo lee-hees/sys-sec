@@ -1,0 +1,33 @@
+<dir class="container">
+    <dir>
+        <h1>
+            사이트 마비<br>:
+            <span class="result_span" id="Site_Result" >
+                [결과 값]
+            </span>
+            (원)
+        </h1>
+    </dir>
+
+    <!-- 소프트웨어 회복 비용 -->
+    <dir>
+        <!-- 입력 -->
+        <dir>
+            <!-- 각 항목 -->
+            <dir>
+                <span>추정 GDP</span>
+                <input type="text" id='GDP'
+                    onkeyup="Site()" />
+            </dir>
+            <dir>
+                <span>연간 근무 시간</span>
+                <input type="text" id='RTime' onkeyup="Site()" />
+            </dir>
+            <dir>
+                <span>피해 시간 (24 ~ 72)</span>
+                <input type="text" id='DamageTime'
+                    onkeyup="Site()" />
+            </dir>
+        </dir>
+    </dir>
+</dir>

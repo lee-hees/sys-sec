@@ -181,9 +181,9 @@ function TheValueOfUnrecoverableData() // 복구불능 데이터의 가치 (데�
 
 
 // 복구불능 데이터의 가치 (≒ 데이터 재생산 비용) 
-     // 복구불능 데이터의 양 
-     // × 데이터별 평균 재생산소요시간
-     // × 재생산 인력의 시간당 인건비
+// 복구불능 데이터의 양 
+// × 데이터별 평균 재생산소요시간
+// × 재생산 인력의 시간당 인건비
 
 // ==================================================
 
@@ -217,25 +217,16 @@ function PotentialDamage() // 잠재적 피해
 
 // <표12>
 
-function TotalAmountOfDamage() // 잠재적 피해
-{
-     // * 예방비
-     const PreventiveCost =
-          document.getElementById('PreventiveCost').value;
+function plus_all_values() {
+     var RESULT =
+          eval(document.getElementById('c').value + "+" + document.getElementById('PreventiveCost').value);
 
-     var RESULT = eval(DirectDamageAmount() +
-          '+' + LossOfProfitFromSales() +
-          '+' + AmountOfLossDueToReducedProductionEfficiency() +
-          '+' + TheValueOfUnrecoverableData() +
-          '+' + PreventiveCost +
-          '+' + PotentialDamage()
-     );
-
-     document.getElementById("TotalAmountOfDamage_Result").innerText = addComma(RESULT);
+     document.getElementById("TotalAmountOfDamage_Result").innerText =
+          addComma(RESULT);
 
      return RESULT;
-
 }
+
 // 총 피해액
 //     직접적 피해액
 //     + 매출이익 손실비용
@@ -250,24 +241,6 @@ function TotalAmountOfDamage() // 잠재적 피해
 
 // 총 피해액
 
-//     320
-//         직접적 피해
-//             시스템 복구 비용
-//             + 매출이익 손실비용
-//             + 생산효율저하 손실액
-//             + 복구불능 데이터가치
-
-//         간접적 피해
-//             예방을 위한 투자 비용
-
-//         잠재적 비용
-//             주가 하락
-//             (
-//                 + 이미지 손상
-//                 + 신뢰도 하락
-//                 + 법적 보상
-//             )
-
 //     77
 //         {
 //             추정 GDP
@@ -276,20 +249,3 @@ function TotalAmountOfDamage() // 잠재적 피해
 //         * 109 / 1000
 //         * 피해시간 (24-72 시간으로 제한)
 
-
-//     125
-//         손실 이익
-//             시간당 이익
-//             피해시간
-//             침해사고
-
-//         생산효율저하
-//             사고로 영향을 받은 직원 수
-//             시간당 인건비
-//             피해시간
-//             생산효율 저하 비율
-
-//         시스템 복구 비용
-//             sw 복구비(서버,pc 복구비)
-//             hw 대체 비용
-//      }

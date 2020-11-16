@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -12,57 +12,34 @@
     <!-- 비용 ',' 찍는 js -->
     <script src="../../../js/addcomma.js"></script>
     <!-- 함수 구현 -->
-    <script src="../../../js/system.js"></script>
+    <script src="../../../js/site.js"></script>
 
-    <!-- html 삽입 js -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#reproduction").load("../../function/system/reproduction.html");
+            $("#result").load("../../function/site/result.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
-    </script>
+</script>
+
 </head>
 
 <body>
 
-
-
     <div class="box1">
         <div class="box2">
 
-            <!-- <dir id="direct">직접적 피해액</dir> -->
-            <!-- <dir id="sale_loss">매출 이익 손실 비용</dir> -->
-            <!-- <dir id="reduced_production">생산효율 저하로 인한 손실액</dir> -->
-            <dir id="reproduction">데이터 재생산 비용</dir>
-            <!-- <dir id="potential">잠재적 피해</dir> -->
-
-            <!-- <dir id="total">총 피해액</dir> -->
+            <div style="width: 100%;" id="result"></div>
 
             <div id="submit">
-                <input style="zoom:2" type="button" value="건너뛰기" onclick="skip()">
-                <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
+                <input style="zoom:2; display: none;" type="button" value="확인버튼" onclick="submit()">
+                <input style="zoom:2;" type="button" value="최종 결과" onclick="gotoResult()">
             </div>
-
         </div>
     </div>
 
-    <input style="display: none;" type="text" id="c" value="ccc">
+    <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
 
-
-    <script>
-        function skip() {
-            var data = (0 + "+" + document.getElementById("c").value);
-            window.open("sale_loss_op.html?val=" + data, "_self");
-        }
-
-        function submit() {
-            if (TheValueOfUnrecoverableData() != null) {
-                var data = (TheValueOfUnrecoverableData() + "+" + document.getElementById("c").value);
-                window.open("sale_loss_op.html?val=" + data, "_self");
-            }
-        }
-    </script>
     <script type="text/javascript">
 
         function _GET(search) {
@@ -80,12 +57,25 @@
             return obj;
         }
 
+        var dataa;
+
         window.onload = function () {
             var search = window.location.search;
             var getData = _GET(search);
             var sender = document.querySelector('#c');
 
             sender.value = getData.val;
+            dataa=sender.value;
+
+            var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+            // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+
+            document.getElementById("site_result").textContent = ": " + addComma(arr[10]) + " (원)";
+        }
+
+        function gotoResult() {
+            window.open("../Result.html?val="+dataa, "_self");
         }
     </script>
 
