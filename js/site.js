@@ -22,11 +22,11 @@ function Site() // 잠재적 피해
      const DamageTime =
           document.getElementById('DamageTime').value;
 
-     var RESULT = eval((GDP +
+     var RESULT = Math.round(eval((GDP +
           '+' + RTime) +
           '*' + 109 + '/' + 1000 +
           '*' + DamageTime
-     );
+     ));
 
 
      document.getElementById("Site_Result").innerText = addComma(RESULT);

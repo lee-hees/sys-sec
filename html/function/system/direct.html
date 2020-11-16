@@ -2,7 +2,7 @@
     <dir>
         <h1>
             직접적 피해액 <br>:
-            <span class="result_span" id="DirectDamageAmount_Result" onclick="DirectDamageAmount()">
+            <span class="result_span" id="DirectDamageAmount_Result">
                 [결과 값]
             </span>
             (원)
@@ -13,7 +13,7 @@
     <dir>
         <h3>
             소프트웨어 회복 비용 <br>:
-            <span class="result_span" id="SoftwareRecoveryCost_Result">
+            <span class="result_span" id="SoftwareRecoveryCost_Result" onchange="fillHW()">
                 모든 항목을 입력하시오
             </span>
             (원)
@@ -24,16 +24,15 @@
             <dir>
                 <span>피해 시스템 수 (대)</span>
                 <input type="text" id='NumberOfDamageSystems'
-                    onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+                    onkeyup="SoftwareRecoveryCost(),DirectDamageAmount(),fillHW()" />
             </dir>
             <dir>
-                <span>복구 소요 시간</span>
+                <span>1대 복구 소요 시간</span>
                 <input type="text" id='RecoveryTime' onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
             </dir>
             <dir>
-                <span>복구 투입 인원</span>
-                <input type="text" id='RecoveryInputPersonnel'
-                    onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
+                <span>1대 복구 투입 인원</span>
+                <input type="text" id='RecoveryInputPersonnel' onkeyup="SoftwareRecoveryCost(),DirectDamageAmount()" />
             </dir>
             <dir>
                 <span>시간당 임금 (원)</span>
@@ -59,6 +58,11 @@
                 <input type="text" id='NumberOfDamageSystems_HW'
                     onkeyup="HardwareReplacementCost(),DirectDamageAmount()" />
             </dir>
+            <script>
+                $("#NumberOfDamageSystems").keyup(function () {
+                    document.getElementById('NumberOfDamageSystems_HW').value = document.getElementById('NumberOfDamageSystems').value;
+                });
+            </script>
         </dir>
     </dir>
 </dir>
