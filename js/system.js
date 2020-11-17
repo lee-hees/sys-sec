@@ -221,10 +221,12 @@ function plus_all_values() {
 
      var arr = document.getElementById('c').value.split('+');
 
-     var RESULT =
-          eval(document.getElementById('PreventiveCost').value + "+" + document.getElementById('c').value
-               + '-' + arr[0] + '-' + arr[1] + '-' + arr[2] + '-' + arr[3]
-          );
+     var RESULT = 0;
+
+     for (let i = 3 + (arr[0] * 1) + (arr[1] * 2) + 1; i < 3 + (arr[0] * 1) + (arr[1] * 2) + 1 + 5; i++) {
+          RESULT = eval(RESULT + '+' + arr[i]);
+     }
+     RESULT = eval(RESULT + '+' + document.getElementById('PreventiveCost').value);
 
      document.getElementById("TotalAmountOfDamage_Result").innerText =
           addComma(RESULT);
