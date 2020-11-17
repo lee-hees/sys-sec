@@ -12,13 +12,13 @@
     <!-- 비용 ',' 찍는 js -->
     <script src="../../../js/addcomma.js"></script>
     <!-- 함수 구현 -->
-    <script src="../../../js/system.js"></script>
+    <script src="../../../js/privacy.js"></script>
 
     <!-- html 삽입 js -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#direct").load("../../function/system/direct.html");
+            $("#predict").load("../../function/privacy/predict.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
     </script>
@@ -31,7 +31,7 @@
     <div class="box1">
         <div class="box2">
 
-            <dir style="width: 100%;" id="direct">직접적 피해액</dir>
+            <dir id="predict">추정</dir>
 
             <div id="submit">
                 <input style="zoom:2" type="button" value="건너뛰기" onclick="skip()">
@@ -41,10 +41,9 @@
         </div>
     </div>
 
-    <input style="display: none;" type="text" id="c" value="ccc">
+    <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
 
     <script>
-
 
         function _GET(search) {
             var obj = {};
@@ -61,23 +60,27 @@
             return obj;
         }
 
+        var arr = new Array();
+        var dataa;
+
         window.onload = function () {
             var search = window.location.search;
             var getData = _GET(search);
             var sender = document.querySelector('#c');
 
             sender.value = getData.val;
-        }
+            dataa=sender.value;
 
+        }
         function skip() {
-            var data = (document.getElementById("c").value+ "+" +0);
-            window.open("potential_op.html?val=" + data, "_self");
+            var data = dataa+"+"+0;
+            window.open("result_op.html?val=" + data, "_self");
         }
 
         function submit() {
-            if (DirectDamageAmount() != null) {
-                var data = (document.getElementById("c").value+ "+" +DirectDamageAmount());
-                window.open("potential_op.html?val=" + data, "_self");
+            if (Predict() != null) {
+                var data = dataa + '+' + Predict();
+                window.open("result_op.html?val=" + data, "_self");
             }
         }
     </script>

@@ -12,12 +12,12 @@
     <!-- 비용 ',' 찍는 js -->
     <script src="../../../js/addcomma.js"></script>
     <!-- 함수 구현 -->
-    <script src="../../../js/system.js"></script>
+    <script src="../../../js/privacy.js"></script>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#result").load("../../function/system/result.html");
+            $("#result").load("../../function/privacy/result.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
     </script>
@@ -34,16 +34,15 @@
             <div id="submit">
                 <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick=""></div>
                 <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
-                <div id="button3"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
+                <div id="button3"><input style="zoom:2;" type="button" value="시스템 마비" onclick="gotosystem()"></div>
+                <div id="button4"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
             </div>
-
         </div>
     </div>
 
-
     <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
 
-    <script>
+    <script type="text/javascript">
 
         function _GET(search) {
             var obj = {};
@@ -60,7 +59,6 @@
             return obj;
         }
 
-        var arr = new Array();
         var dataa;
 
         window.onload = function () {
@@ -73,64 +71,49 @@
 
             var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[7]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[8]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[9]);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
+            document.getElementById("privacy_result_1").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + 1]
+            ) + " (원)";
+            document.getElementById("privacy_result_2").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + 2]
+            ) + " (원)";
+            document.getElementById("privacy_result_3").textContent = ": " + addComma(eval(
+                arr[3 + (arr[0] * 1) + 1] + '+' +
+                arr[3 + (arr[0] * 1) + 2]
+            )) + " (원)";
 
-            document.getElementById("system_result_1").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]
-            );
-            document.getElementById("system_result_2").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]
-            );
-            document.getElementById("system_result_3").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]
-            );
-            document.getElementById("system_result_4").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]
-            );
-            document.getElementById("system_result_5").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]
-            );
-            document.getElementById("system_result_6").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6]
-            );
-            document.getElementById("system_result_7").textContent = ": " + addComma(eval(
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6])
-            ));
-
-            if (arr[3] == 0) {
+            if (arr[2] == 1) {
                 // alert("더 없음");
+                document.getElementById("button1").style.display = "block";
+                document.getElementById("button2").style.display = "none";
+                document.getElementById("button3").style.display = "block";
+                document.getElementById("button4").style.display = "none";
+            }
+            else if(arr[3]==1){
+                // alert("더 있음");
+                document.getElementById("button1").style.display = "block";
+                document.getElementById("button2").style.display = "none";
+                document.getElementById("button3").style.display = "none";
+                document.getElementById("button4").style.display = "block";
+            }
+            else{
                 document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "block";
                 document.getElementById("button3").style.display = "none";
-            }
-            else {
-                // alert("더 있음");
-                document.getElementById("button1").style.display = "none";
-                document.getElementById("button2").style.display = "none";
-                document.getElementById("button3").style.display = "block";
+                document.getElementById("button4").style.display = "none";
             }
         }
 
-        function goto___() {
-
+        function gotosystem() {
+            window.open("../system/direct_op.html?val=" + dataa, "_self");
         }
-
-        function gotoResult() {
-            window.open("../Result.html?val=" + dataa, "_self");
-        }
-
         function gotosite() {
             window.open("../site/site_op.html?val=" + dataa, "_self");
+        }
+        function gotoResult() {
+            window.open("../Result.html?val=" + dataa, "_self");
         }
     </script>
 

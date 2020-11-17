@@ -218,8 +218,13 @@ function PotentialDamage() // 잠재적 피해
 // <표12>
 
 function plus_all_values() {
+
+     var arr = document.getElementById('c').value.split('+');
+
      var RESULT =
-          eval(document.getElementById('c').value + "+" + document.getElementById('PreventiveCost').value);
+          eval(document.getElementById('PreventiveCost').value + "+" + document.getElementById('c').value
+               + '-' + arr[0] + '-' + arr[1] + '-' + arr[2] + '-' + arr[3]
+          );
 
      document.getElementById("TotalAmountOfDamage_Result").innerText =
           addComma(RESULT);

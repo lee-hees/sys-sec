@@ -17,6 +17,8 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            // $("#site").load("../function/site/result.html");
+            $("#privacy").load("../function/privacy/result.html");
             $("#system").load("../function/system/result.html");
             $("#site").load("../function/site/result.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
@@ -29,22 +31,22 @@
 
     <div id="bitcoin_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="bitcoin">aaaa</div>
+            <div style="width: 100%;" id="bitcoin">bitcoin</div>
         </div>
     </div>
     <div id="privacy_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="privacy">aaaa</div>
+            <div style="width: 100%;" id="privacy">privacy</div>
         </div>
     </div>
     <div id="system_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="system">aaaa</div>
+            <div style="width: 100%;" id="system">system</div>
         </div>
     </div>
     <div id="site_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="site">aaaa</div>
+            <div style="width: 100%;" id="site">site</div>
         </div>
     </div>
 
@@ -77,7 +79,7 @@
 
             sender.value = getData.val;
 
-            
+
             var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
@@ -85,55 +87,84 @@
             // alert(arr[8]);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[9]);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
-            
-            // 시스템 마비 결과
-            document.getElementById("system_result_1").textContent = ": " + addComma(arr[5]);
-            document.getElementById("system_result_2").textContent = ": " + addComma(arr[4]);
-            document.getElementById("system_result_3").textContent = ": " + addComma(arr[3]);
-            document.getElementById("system_result_4").textContent = ": " + addComma(arr[2]);
-            document.getElementById("system_result_5").textContent = ": " + addComma(arr[1]);
-            document.getElementById("system_result_6").textContent = ": " + addComma(arr[0]);
-            document.getElementById("system_result_7").textContent = ": " + addComma(eval(
-                (arr[0]) + "+" +
-                (arr[1]) + "+" +
-                (arr[2]) + "+" +
-                (arr[3]) + "+" +
-                (arr[4]) + "+" +
-                (arr[5])
-            ));
-            // 사이트 마비 결과
-            document.getElementById("site_result").textContent = ": " + addComma(arr[10]) + " (원)";
 
-
-            if (arr[9] == 0) {
-                document.getElementById("site_").style.display = "none";
-            }
-            else{
-                document.getElementById("site_").style.display = "block";
-            }
-
-            if (arr[8] == 0) {
-                document.getElementById("system_").style.display = "none";
-            }
-            else{
-                document.getElementById("system_").style.display = "block";
-            }
-
-            if (arr[7] == 0) {
-                document.getElementById("privacy_").style.display = "none";
-            }
-            else{
-                document.getElementById("privacy_").style.display = "block";
-            }
-
-            if (arr[6] == 0) {
+            // 선택한 항목만 보여주기
+            if (arr[0] == 0) {
                 document.getElementById("bitcoin_").style.display = "none";
             }
-            else{
+            else {
                 document.getElementById("bitcoin_").style.display = "block";
             }
 
-            
+            if (arr[1] == 0) {
+                document.getElementById("privacy_").style.display = "none";
+            }
+            else {
+                document.getElementById("privacy_").style.display = "block";
+            }
+
+            if (arr[2] == 0) {
+                document.getElementById("system_").style.display = "none";
+            }
+            else {
+                document.getElementById("system_").style.display = "block";
+            }
+
+            if (arr[3] == 0) {
+                document.getElementById("site_").style.display = "none";
+            }
+            else {
+                document.getElementById("site_").style.display = "block";
+            }
+
+            // 개인정보
+            document.getElementById("privacy_result_1").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + 1]
+            ) + " (원)";
+            document.getElementById("privacy_result_2").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + 2]
+            ) + " (원)";
+            document.getElementById("privacy_result_3").textContent = ": " + addComma(eval(
+                arr[3 + (arr[0] * 1) + 1] + '+' +
+                arr[3 + (arr[0] * 1) + 2]
+            )) + " (원)";
+
+            // 시스템 마비 결과
+            document.getElementById("system_result_1").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]
+            );
+            document.getElementById("system_result_2").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]
+            );
+            document.getElementById("system_result_3").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]
+            );
+            document.getElementById("system_result_4").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]
+            );
+            document.getElementById("system_result_5").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]
+            );
+            document.getElementById("system_result_6").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6]
+            );
+            document.getElementById("system_result_7").textContent = ": " + addComma(eval(
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]) + "+" +
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]) + "+" +
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]) + "+" +
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]) + "+" +
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]) + "+" +
+                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6])
+            ));
+
+            // 사이트 마비 결과
+            document.getElementById("site_result").textContent = ": " + addComma(
+                arr[3 + (arr[0] * 1) + (arr[1] * 2) + (arr[2] * 6) + 1]
+            ) + " (원)";
+
+
+
+
 
         }
     </script>

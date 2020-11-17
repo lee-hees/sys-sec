@@ -52,13 +52,13 @@
 
     <script>
         function skip() {
-            var data = (0 + "+" + document.getElementById("c").value);
+            var data = (document.getElementById("c").value + "+" + 0);
             window.open("total_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (LossOfProfitFromSales() != null) {
-                var data = (LossOfProfitFromSales() + "+" + document.getElementById("c").value);
+                var data = (document.getElementById("c").value + "+" + LossOfProfitFromSales());
                 window.open("total_op.html?val=" + data, "_self");
             }
         }

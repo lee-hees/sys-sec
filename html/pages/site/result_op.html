@@ -20,7 +20,7 @@
             $("#result").load("../../function/site/result.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
-</script>
+    </script>
 
 </head>
 
@@ -65,17 +65,17 @@
             var sender = document.querySelector('#c');
 
             sender.value = getData.val;
-            dataa=sender.value;
+            dataa = sender.value;
 
             var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
-            document.getElementById("site_result").textContent = ": " + addComma(arr[10]) + " (원)";
+            document.getElementById("site_result").textContent = ": " + addComma(arr[3 + (arr[0] * 1) + (arr[1] * 2) + (arr[2] * 6) + 1]) + " (원)";
         }
 
         function gotoResult() {
-            window.open("../Result.html?val="+dataa, "_self");
+            window.open("../Result.html?val=" + dataa, "_self");
         }
     </script>
 
