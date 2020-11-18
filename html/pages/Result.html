@@ -17,7 +17,7 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            // $("#site").load("../function/site/result.html");
+            $("#bitcoin").load("../function/bitcoin/result.html");
             $("#privacy").load("../function/privacy/result.html");
             $("#system").load("../function/system/result.html");
             $("#site").load("../function/site/result.html");
@@ -31,22 +31,132 @@
 
     <div id="bitcoin_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="bitcoin">bitcoin</div>
+            <!-- <div style="width: 100%;" id="bitcoin">bitcoin</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">비트코인 손실 예측 결과</h1>
+                    <h3 class="titleH">----</h3>
+                </div>
+
+                <div id="question-result">
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="bitcoin_result">계산 결과
+                            표시</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="privacy_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="privacy">privacy</div>
+            <!-- <div style="width: 100%;" id="privacy">privacy</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">개인정보 손실 예측 결과</h1>
+                    <h3 class="titleH">----</h3>
+                </div>
+
+                <div id="question-result">
+                    <div class="result">
+                        <span style="font-size: 22px;" class="result-span">실제</span>
+                        <span style="font-size: 22px;" class="result-span" id="privacy_result_1">계산 결과 표시</span>
+                    </div>
+                    <div class="result">
+                        <span style="font-size: 22px;" class="result-span">추정</span>
+                        <span style="font-size: 22px;" class="result-span" id="privacy_result_2">계산 결과 표시</span>
+                    </div>
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="privacy_result_3">계산 결과
+                            표시</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="system_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="system">system</div>
+            <!-- <div style="width: 100%;" id="system">system</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">시스템 마비 손실 예측 결과</h1>
+                    <h3 class="titleH">---</h3>
+                </div>
+
+
+                <div id="question-result">
+                    <div class="result">
+                        <span class="result-span">직접적 피해액</span>
+                        <span class="result-span" id="system_result_1">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <div class="result">
+                        <span class="result-span">잠재적 피해액</span>
+                        <span class="result-span" id="system_result_2">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <div class="result">
+                        <span class="result-span">생산효율 저하로 인한 손실액</span>
+                        <span class="result-span" id="system_result_3">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <div class="result">
+                        <span class="result-span">복구불능 데이터 가치<br>(데이터 재생산 비용)</span>
+                        <span class="result-span" id="system_result_4">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <div class="result">
+                        <span class="result-span">매출 이익 손실 비용</span>
+                        <span class="result-span" id="system_result_5">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <div class="result">
+                        <span class="result-span">예방비용</span>
+                        <span class="result-span" id="system_result_6">1</span>
+                        <span class="result-span">→ 000,000</span>
+                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
+                                type="checkbox"></span>
+                    </div>
+                    <br>
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span"
+                            id="system_result_7">1</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">가중치 적용 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">→ 000,000</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="site_" class="box1">
         <div class="box2">
-            <div style="width: 100%;" id="site">site</div>
+            <!-- <div style="width: 100%;" id="site">site</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">사이트 마비 손실 예측 결과</h1>
+                    <h3 class="titleH">----</h3>
+                </div>
+
+                <div id="question-result">
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">직접적 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="site_result">계산 결과
+                            표시</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -80,92 +190,107 @@
             sender.value = getData.val;
 
 
-            var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
-            // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[7]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[8]);   // ["aa", "bb", "cc", "dd", "ee"]
-            // alert(arr[9]);   // ["aa", "bb", "cc", "dd", "ee"]
+            var arr = sender.value.split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+
+            var selected = arr[0].split("+");
+            // alert(selected[0]);
+            // alert(selected[1]);
+            // alert(selected[2]);
+            // alert(selected[3]);
+            var bitcoin_arr = arr[eval(selected[0])].split("+");
+            var privacy_arr = arr[eval(selected[0] + '+' + selected[1])].split("+");
+            var system_arr = arr[eval(selected[0] + '+' + selected[1] + '+' + selected[2])].split("+");
+            var site_arr = arr[eval(selected[0] + '+' + selected[1] + '+' + selected[2] + '+' + selected[3])].split("+");
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
             // 선택한 항목만 보여주기
-            if (arr[0] == 0) {
+            if (selected[0] == 0) {
                 document.getElementById("bitcoin_").style.display = "none";
             }
             else {
                 document.getElementById("bitcoin_").style.display = "block";
             }
 
-            if (arr[1] == 0) {
+            if (selected[1] == 0) {
                 document.getElementById("privacy_").style.display = "none";
             }
             else {
                 document.getElementById("privacy_").style.display = "block";
             }
 
-            if (arr[2] == 0) {
+            if (selected[2] == 0) {
                 document.getElementById("system_").style.display = "none";
             }
             else {
                 document.getElementById("system_").style.display = "block";
             }
 
-            if (arr[3] == 0) {
+            if (selected[3] == 0) {
                 document.getElementById("site_").style.display = "none";
             }
             else {
                 document.getElementById("site_").style.display = "block";
             }
 
-            // 개인정보
-            document.getElementById("privacy_result_1").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + 1]
-            ) + " (원)";
-            document.getElementById("privacy_result_2").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + 2]
-            ) + " (원)";
-            document.getElementById("privacy_result_3").textContent = ": " + addComma(eval(
-                arr[3 + (arr[0] * 1) + 1] + '+' +
-                arr[3 + (arr[0] * 1) + 2]
-            )) + " (원)";
+            if (selected[0] == 1) {
+                // alert("// 비트코인");
 
-            // 시스템 마비 결과
-            document.getElementById("system_result_1").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]
-            );
-            document.getElementById("system_result_2").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]
-            );
-            document.getElementById("system_result_3").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]
-            );
-            document.getElementById("system_result_4").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]
-            );
-            document.getElementById("system_result_5").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]
-            );
-            document.getElementById("system_result_6").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6]
-            );
-            document.getElementById("system_result_7").textContent = ": " + addComma(eval(
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6])
-            ));
+                document.getElementById("bitcoin_result").textContent = ": " + addComma(bitcoin_arr[0]) + " (원)";
+            }
 
-            // 사이트 마비 결과
-            document.getElementById("site_result").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + (arr[2] * 6) + 1]
-            ) + " (원)";
+            if (selected[1] == 1) {
+                // alert("// 개인정보");
 
+                document.getElementById("privacy_result_1").textContent = ": " + addComma(
+                    privacy_arr[0]
+                ) + " (원)";
+                document.getElementById("privacy_result_2").textContent = ": " + addComma(
+                    privacy_arr[1]
+                ) + " (원)";
+                document.getElementById("privacy_result_3").textContent = ": " + addComma(eval(
+                    privacy_arr[0] + '+' +
+                    privacy_arr[1]
+                )) + " (원)";
+            }
 
+            if (selected[2] == 1) {
+                // alert("// 시스템 마비 결과");
 
+                document.getElementById("system_result_1").textContent = ": " + addComma(
+                    system_arr[0]
+                );
+                document.getElementById("system_result_2").textContent = ": " + addComma(
+                    system_arr[1]
+                );
+                document.getElementById("system_result_3").textContent = ": " + addComma(
+                    system_arr[2]
+                );
+                document.getElementById("system_result_4").textContent = ": " + addComma(
+                    system_arr[3]
+                );
+                document.getElementById("system_result_5").textContent = ": " + addComma(
+                    system_arr[4]
+                );
+                document.getElementById("system_result_6").textContent = ": " + addComma(
+                    system_arr[5]
+                );
+                document.getElementById("system_result_7").textContent = ": " + addComma(eval(
+                    (system_arr[0]) + "+" +
+                    (system_arr[1]) + "+" +
+                    (system_arr[2]) + "+" +
+                    (system_arr[3]) + "+" +
+                    (system_arr[4]) + "+" +
+                    (system_arr[5])
+                ));
 
+            }
 
+            if (selected[3] == 1) {
+                // alert("// 사이트 마비 결과");
+
+                document.getElementById("site_result").textContent = ": " + addComma(site_arr[0]) + " (원)";
+
+            }
         }
     </script>
 

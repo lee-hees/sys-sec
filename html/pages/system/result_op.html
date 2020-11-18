@@ -71,7 +71,9 @@
             sender.value = getData.val;
             dataa = sender.value;
 
-            var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var arr = sender.value.split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var selected = arr[0].split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[7]);   // ["aa", "bb", "cc", "dd", "ee"]
@@ -81,33 +83,33 @@
 
 
             document.getElementById("system_result_1").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]
+                system_arr[0]
             );
             document.getElementById("system_result_2").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]
+                system_arr[1]
             );
             document.getElementById("system_result_3").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]
+                system_arr[2]
             );
             document.getElementById("system_result_4").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]
+                system_arr[3]
             );
             document.getElementById("system_result_5").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]
+                system_arr[4]
             );
             document.getElementById("system_result_6").textContent = ": " + addComma(
-                arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6]
+                system_arr[5]
             );
             document.getElementById("system_result_7").textContent = ": " + addComma(eval(
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 1]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 2]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 3]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 4]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 5]) + "+" +
-                (arr[3 + (arr[0] * 1) + (arr[1] * 2) + 6])
+                (system_arr[0]) + "+" +
+                (system_arr[1]) + "+" +
+                (system_arr[2]) + "+" +
+                (system_arr[3]) + "+" +
+                (system_arr[4]) + "+" +
+                (system_arr[5])
             ));
 
-            if (arr[3] == 0) {
+            if (selected[3] == 0) {
                 // alert("더 없음");
                 document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "block";
@@ -115,7 +117,7 @@
             }
             else {
                 // alert("더 있음");
-                document.getElementById("button1").style.display = "none";
+                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "none";
                 document.getElementById("button3").style.display = "block";
             }

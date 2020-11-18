@@ -219,12 +219,14 @@ function PotentialDamage() // 잠재적 피해
 
 function plus_all_values() {
 
-     var arr = document.getElementById('c').value.split('+');
+     var arr = document.getElementById('c').value.split('/');
+     var selected = arr[0].split("+");
+     var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("+");
 
      var RESULT = 0;
 
-     for (let i = 3 + (arr[0] * 1) + (arr[1] * 2) + 1; i < 3 + (arr[0] * 1) + (arr[1] * 2) + 1 + 5; i++) {
-          RESULT = eval(RESULT + '+' + arr[i]);
+     for (let i = 0; i < system_arr.length; i++) {
+          RESULT = eval(RESULT + '+' + system_arr[i]);
      }
      RESULT = eval(RESULT + '+' + document.getElementById('PreventiveCost').value);
 

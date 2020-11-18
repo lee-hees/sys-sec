@@ -103,12 +103,12 @@
             return site_check;
         }
 
-        
+
         function submit() {
             var data = bitcoin_check + '+' + privacy_check + '+' + system_check + '+' + site_check;
 
             if (bitcoin_check != 0) {
-                window.open("google.com", "_self");
+                window.open("html/pages/bitcoin/bitcoin_op.html?val=" + data, "_self");
             }
             else if (privacy_check != 0) {
                 window.open("html/pages/privacy/real_op.html?val=" + data, "_self");

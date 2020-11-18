@@ -67,11 +67,15 @@
             sender.value = getData.val;
             dataa = sender.value;
 
-            var arr = sender.value.split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var arr = sender.value.split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            
+            var selected = arr[0].split("+");
+            var site_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2] +'+'+ selected[3])].split("+");
+            
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
-            document.getElementById("site_result").textContent = ": " + addComma(arr[3 + (arr[0] * 1) + (arr[1] * 2) + (arr[2] * 6) + 1]) + " (원)";
+            document.getElementById("site_result").textContent = ": " + addComma(site_arr[0]) + " (원)";
         }
 
         function gotoResult() {
