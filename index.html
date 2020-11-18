@@ -31,19 +31,19 @@
                 <div id="question2">
                     <div class="choose-show">
                         <div class="box3">
-                            <input style="zoom:2" type="radio" onclick="bitcoin()"> 가상화폐</input>
+                            <input id="bitcoin" style="zoom:2" type="checkbox" onclick="bitcoin()"> 가상화폐</input>
                         </div>
                         <div class="box3">
-                            <input style="zoom:2" type="radio" onclick="privacy()"> 개인정보</input>
+                            <input style="zoom:2" type="checkbox" onclick="privacy()"> 개인정보</input>
                         </div>
                         <div class="box4">
-                            <input style="zoom:2" type="radio" onclick="fun1()"> 테러</input>
+                            <input style="zoom:2" type="checkbox" onclick="fun1()"> 테러</input>
                             <div class="choose-hide">
                                 <div id="list1" class="box4" style="display: none;">
-                                    <input style="zoom:2" type="radio" onclick="system()"> 시스템</input>
+                                    <input style="zoom:2" type="checkbox" onclick="system()"> 시스템</input>
                                 </div>
                                 <div id="list2" class="box4" style="display: none;">
-                                    <input style="zoom:2" type="radio" onclick="site()"> 사이트</input>
+                                    <input style="zoom:2" type="checkbox" onclick="site()"> 사이트</input>
 
                                 </div>
                             </div>
@@ -78,28 +78,48 @@
         // 가상화폐
         var bitcoin_check = 0;
         function bitcoin() {
-            bitcoin_check += 1;
+            if(bitcoin_check==0){
+                bitcoin_check = 1;
+            }
+            else{
+                bitcoin_check = 0;
+            }
             return bitcoin_check;
         }
 
         // 개인정보
         var privacy_check = 0;
         function privacy() {
-            privacy_check += 1;
+            if(privacy_check==0){
+                privacy_check = 1;
+            }
+            else{
+                privacy_check = 0;
+            }
             return privacy_check;
         }
 
         // 시스템
         var system_check = 0;
         function system() {
-            system_check += 1;
+            if(system_check==0){
+                system_check = 1;
+            }
+            else{
+                system_check = 0;
+            }
             return system_check;
         }
 
         // 사이트
         var site_check = 0;
         function site() {
-            site_check += 1;
+            if(site_check==0){
+                site_check = 1;
+            }
+            else{
+                site_check = 0;
+            }
             return site_check;
         }
 
