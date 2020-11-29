@@ -219,9 +219,9 @@ function PotentialDamage() // 잠재적 피해
 
 function plus_all_values() {
 
-     var arr = document.getElementById('c').value.split('/');
+     var arr = document.getElementById('c').value.split('//');
      var selected = arr[0].split("+");
-     var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("+");
+     var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("/");
 
      var RESULT = 0;
 

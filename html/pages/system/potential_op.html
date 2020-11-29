@@ -51,13 +51,13 @@
 
     <script>
         function skip() {
-            var data = (document.getElementById("c").value + "+" + 0);
+            var data = (document.getElementById("c").value + "/" + 0);
             window.open("reduced_production_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (PotentialDamage() != null) {
-                var data = (document.getElementById("c").value + "+" + PotentialDamage());
+                var data = (document.getElementById("c").value + "/" + PotentialDamage());
                 window.open("reduced_production_op.html?val=" + data, "_self");
             }
         }

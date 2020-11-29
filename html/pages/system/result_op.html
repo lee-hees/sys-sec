@@ -41,58 +41,38 @@
                     <div class="result">
                         <span class="result-span">직접적 피해액</span>
                         <span class="result-span" id="system_result_1">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <div class="result">
                         <span class="result-span">잠재적 피해액</span>
                         <span class="result-span" id="system_result_2">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <div class="result">
                         <span class="result-span">생산효율 저하로 인한 손실액</span>
                         <span class="result-span" id="system_result_3">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <div class="result">
                         <span class="result-span">복구불능 데이터 가치<br>(데이터 재생산 비용)</span>
                         <span class="result-span" id="system_result_4">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <div class="result">
                         <span class="result-span">매출 이익 손실 비용</span>
                         <span class="result-span" id="system_result_5">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <div class="result">
                         <span class="result-span">예방비용</span>
                         <span class="result-span" id="system_result_6">1</span>
-                        <span class="result-span">→ 000,000</span>
-                        <span class="result-span">가중치 적용&nbsp;&nbsp;&nbsp;<input style="zoom: 1.5;"
-                                type="checkbox"></span>
                     </div>
                     <br>
                     <div class="result">
                         <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
                         <span style="font-weight: bold;font-size: 22px;" class="result-span"
                             id="system_result_7">1</span>
-                        <span style="font-weight: bold;font-size: 22px;" class="result-span">가중치 적용 피해액</span>
-                        <span style="font-weight: bold;font-size: 22px;" class="result-span">→ 000,000</span>
                     </div>
                 </div>
             </div>
 
             <div id="submit">
-                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick=""></div>
+                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick="gotoWeight()"></div>
                 <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
                 <div id="button3"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
             </div>
@@ -131,9 +111,9 @@
             sender.value = getData.val;
             dataa = sender.value;
 
-            var arr = sender.value.split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var arr = sender.value.split("//");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             var selected = arr[0].split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
-            var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("+");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var system_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2])].split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[6]);   // ["aa", "bb", "cc", "dd", "ee"]
             // alert(arr[7]);   // ["aa", "bb", "cc", "dd", "ee"]
@@ -183,10 +163,9 @@
             }
         }
 
-        function goto___() {
-
+        function gotoWeight() {
+            window.open("./weight_op.html?val=" + dataa + "/1", "_self");
         }
-
         function gotoResult() {
             window.open("../Result.html?val=" + dataa, "_self");
         }

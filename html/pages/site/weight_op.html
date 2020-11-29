@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../../css/functions.css">
+    <link rel="stylesheet" href="../../../css/question_box.css">
+
+    <!-- 비용 ',' 찍는 js -->
+    <script src="../../../js/addcomma.js"></script>
+    <!-- 함수 구현 -->
+    <script src="../../../js/bicoin.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#result").load("../../function/site/result.html");
+            //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box1">
+        <div class="box2">
+
+            <!-- <div style="width: 100%;" id="site">site</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">개인정보 손실 가중치 적용</h1>
+                    <h3 class="titleH">----</h3>
+                </div>
+
+                <div id="question-result">
+                    <div class="result">
+                        <span class="result-span-weight1">실제 보상금액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w1" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">추정 보상금액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w2" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+
+                    </div>
+                    <br><br>
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="site_result">계산 결과
+                            표시</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="submit">
+                <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
+                <div id="button4"><input style="zoom:2;" type="button" value="시스템 마비" onclick="gotosystem()"></div>
+                <div id="button5"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
+            </div>
+        </div>
+    </div>
+
+    <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
+
+    <script type="text/javascript">
+
+        function _GET(search) {
+            var obj = {};
+            var uri = decodeURI(search);
+            uri = uri.slice(1, uri.length);
+
+            var param = uri.split('&');
+
+            for (var i = 0; i < param.length; i++) {
+                var devide = param[i].split('=');
+                obj[devide[0]] = devide[1];
+            }
+
+            return obj;
+        }
+
+        var dataa;
+        var sites;
+
+        window.onload = function () {
+            var search = window.location.search;
+            var getData = _GET(search);
+            var sender = document.querySelector('#c');
+
+            sender.value = getData.val;
+            dataa = sender.value;
+
+            var arr = sender.value.split("//");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+
+            var selected = arr[0].split("+");
+            var site_arr = arr[eval(selected[0] + '+' + selected[1] + '+' + selected[2] + '+' + selected[3])].split("/");
+            var site = site_arr[0].split('+');
+            sites = site;
+            // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+            // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+
+            document.getElementById("site_result").textContent = ": " + addComma(
+                eval(eval(site[0] + '+' + site[1]) + '*' + 109 + '/' + 1000 + '*' + site[2])
+            ) + " (원)";
+
+
+            document.getElementById("button2").style.display = "block";
+            document.getElementById("button4").style.display = "none";
+            document.getElementById("button5").style.display = "none";
+
+        }
+
+        function AAA() {
+
+            var w1 = $("#w1 option:selected").val();
+            var w2 = $("#w2 option:selected").val();
+            var under = eval(w1 + '+' + w2); // 분모
+
+            var aa = eval(sites[0] + '*' + w1 + '/' + under);
+            var bb = eval(sites[1] + '*' + w2 + '/' + under);
+
+            var Result = eval(eval(aa + '+' + bb) + '*' + 2);
+
+            document.getElementById("site_result").textContent = ": " + addComma(Result) + " (원)";
+
+            return Result;
+        }
+
+        function gotoWeight() {
+            window.open("./weight_op.html?val=" + dataa + "/1", "_self");
+        }
+        function gotosystem() {
+            window.open("../system/direct_op.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+        function gotosite() {
+            window.open("../site/site_op.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+        function gotoResult() {
+            window.open("../Result.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

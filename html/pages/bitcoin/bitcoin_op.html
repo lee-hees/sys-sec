@@ -31,7 +31,30 @@
     <div class="box1">
         <div class="box2">
 
-            <dir id="bitcoin">실제</dir>
+            <dir>
+                <h1>
+                    비트코인 피해금액 <br>:
+                    <span class="result_span" id="Bitcoin_Result">
+                        [결과 값]
+                    </span>
+                    (원)
+                </h1>
+            </dir>
+
+            <dir>
+                <!-- 입력 -->
+                <dir>
+                    <!-- 각 항목 -->
+                    <dir>
+                        <span>해당 날짜의 1코인(토큰)당 가격 (원)</span>
+                        <input type="text" id='aa' onkeyup="Bitcoin()" />
+                    </dir>
+                    <dir>
+                        <span>탈취당한 코인 수</span>
+                        <input type="text" id='bb' onkeyup="Bitcoin()" />
+                    </dir>
+                </dir>
+            </dir>
 
             <div id="submit">
                 <input style="zoom:2" type="button" value="건너뛰기" onclick="skip()">
@@ -73,14 +96,13 @@
 
         }
         function skip() {
-            var data = dataa + "/" + 0;
+            var data = dataa + "//0+0/0";
             window.open("result_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (Bitcoin() != null) {
-                var data = dataa + '/' + Bitcoin();
-                window.open("result_op.html?val=" + data, "_self");
+                window.open("result_op.html?val=" +dataa+ '//' + document.getElementById('aa').value + '+' + document.getElementById('bb').value + '/' + Bitcoin(), "_self");
             }
         }
     </script>

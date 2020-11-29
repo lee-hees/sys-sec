@@ -17,7 +17,7 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#result").load("../../function/bitcoin/result.html");
+            $("#result").load("../../function/privacy/result.html");
             //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
         });
     </script>
@@ -29,26 +29,52 @@
     <div class="box1">
         <div class="box2">
 
-            <!-- <div style="width: 100%;" id="bitcoin">bitcoin</div> -->
+            <!-- <div style="width: 100%;" id="privacy">privacy</div> -->
             <div style="width: 100%;">
                 <div id="title">
-                    <h1 class="titleH">비트코인 손실 예측 결과</h1>
+                    <h1 class="titleH">개인정보 손실 가중치 적용</h1>
                     <h3 class="titleH">----</h3>
                 </div>
 
                 <div id="question-result">
                     <div class="result">
+                        <span class="result-span-weight1">실제 보상금액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w1" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">추정 보상금액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w2" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+
+                    </div>
+                    <br><br>
+                    <div class="result">
                         <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
-                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="bitcoin_result">계산 결과
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="privacy_result">계산 결과
                             표시</span>
                     </div>
                 </div>
             </div>
 
             <div id="submit">
-                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick="gotoWeight()"></div>
                 <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
-                <div id="button3"><input style="zoom:2;" type="button" value="개인정보" onclick="gotoprivacy()"></div>
                 <div id="button4"><input style="zoom:2;" type="button" value="시스템 마비" onclick="gotosystem()"></div>
                 <div id="button5"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
             </div>
@@ -75,6 +101,7 @@
         }
 
         var dataa;
+        var privacys;
 
         window.onload = function () {
             var search = window.location.search;
@@ -87,57 +114,62 @@
             var arr = sender.value.split("//");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
 
             var selected = arr[0].split("+");
-            var bitcoin_arr = arr[eval(selected[0])].split("/");
+            var privacy_arr = arr[eval(selected[0]+'+'+selected[1])].split("/");
+            privacys=privacy_arr;
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
-            document.getElementById("bitcoin_result").textContent = ": " + addComma(bitcoin_arr[1]) + " (원)";
+            document.getElementById("privacy_result").textContent = ": " + addComma(eval(privacy_arr[0]+'+'+privacy_arr[1])) + " (원)";
 
-            if (selected[1] == 1) {
-                document.getElementById("button1").style.display = "block";
+            if (selected[2] == 1) {
                 document.getElementById("button2").style.display = "none";
-                document.getElementById("button3").style.display = "block";
-                document.getElementById("button4").style.display = "none";
-                document.getElementById("button5").style.display = "none";
-            }
-            else if (selected[2] == 1) {
-                document.getElementById("button1").style.display = "block";
-                document.getElementById("button2").style.display = "none";
-                document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "block";
                 document.getElementById("button5").style.display = "none";
             }
             else if (selected[3] == 1) {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "none";
-                document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "none";
                 document.getElementById("button5").style.display = "block";
             }
             else {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "block";
-                document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "none";
                 document.getElementById("button5").style.display = "none";
             }
         }
 
+        function AAA() {
+
+            var w1 = $("#w1 option:selected").val();
+            var w2 = $("#w2 option:selected").val();
+            var under = eval(w1 + '+' + w2); // 분모
+
+            var aa = eval(privacys[0] + '*' + w1 + '/' + under);
+            var bb = eval(privacys[1] + '*' + w2 + '/' + under);
+
+            var Result = eval(eval(aa + '+' + bb) + '*' + 2);
+
+            document.getElementById("privacy_result").textContent = ": " + addComma(Result) + " (원)";
+
+            return Result;
+        }
+        
         function gotoWeight() {
             window.open("./weight_op.html?val=" + dataa + "/1", "_self");
         }
-        function gotoprivacy() {
-            window.open("../privacy/real_op.html?val=" + dataa + "/0", "_self");
-        }
         function gotosystem() {
-            window.open("../system/direct_op.html?val=" + dataa + "/0", "_self");
+            window.open("../system/direct_op.html?val=" + dataa+ '/' + AAA(), "_self");
         }
         function gotosite() {
-            window.open("../site/site_op.html?val=" + dataa + "/0", "_self");
+            window.open("../site/site_op.html?val=" + dataa+ '/' + AAA(), "_self");
         }
         function gotoResult() {
-            window.open("../Result.html?val=" + dataa, "_self");
+            window.open("../Result.html?val=" + dataa + '/' + AAA(), "_self");
         }
+
+
+
+
     </script>
 
 </body>

@@ -47,6 +47,7 @@
 
             <div id="submit">
                 <input style="zoom:2; display: none;" type="button" value="확인버튼" onclick="submit()">
+                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick="gotoWeight()"></div>
                 <input style="zoom:2;" type="button" value="최종 결과" onclick="gotoResult()">
             </div>
         </div>
@@ -81,20 +82,24 @@
             sender.value = getData.val;
             dataa = sender.value;
 
-            var arr = sender.value.split("/");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+            var arr = sender.value.split("//");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
             
             var selected = arr[0].split("+");
-            var site_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2] +'+'+ selected[3])].split("+");
+            var site_arr = arr[eval(selected[0] +'+'+ selected[1] +'+'+ selected[2] +'+'+ selected[3])].split("/");
             
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
-            document.getElementById("site_result").textContent = ": " + addComma(site_arr[0]) + " (원)";
+            document.getElementById("site_result").textContent = ": " + addComma(site_arr[1]) + " (원)";
         }
 
         function gotoResult() {
             window.open("../Result.html?val=" + dataa, "_self");
         }
+        function gotoWeight() {
+            window.open("./weight_op.html?val=" + dataa + "/1", "_self");
+        }
+
     </script>
 
 </body>

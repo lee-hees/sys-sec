@@ -52,13 +52,13 @@
 
     <script>
         function skip() {
-            var data = (document.getElementById("c").value + "+" + 0);
+            var data = (document.getElementById("c").value + "/" + 0);
             window.open("sale_loss_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (TheValueOfUnrecoverableData() != null) {
-                var data = (document.getElementById("c").value + "+" + TheValueOfUnrecoverableData());
+                var data = (document.getElementById("c").value + "/" + TheValueOfUnrecoverableData());
                 window.open("sale_loss_op.html?val=" + data, "_self");
             }
         }

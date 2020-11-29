@@ -69,17 +69,17 @@
             var sender = document.querySelector('#c');
 
             sender.value = getData.val;
-            dataa=sender.value;
+            dataa = sender.value;
 
         }
         function skip() {
-            var data = dataa+"/"+0;
+            var data = dataa + "//0+0+0/0";
             window.open("result_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (Site() != null) {
-                var data = dataa + '/' + Site();
+                var data = dataa + '//' + document.getElementById('GDP').value + '+' + document.getElementById('RTime').value + '+' + document.getElementById('DamageTime').value + '/' + Site();
                 window.open("result_op.html?val=" + data, "_self");
             }
         }

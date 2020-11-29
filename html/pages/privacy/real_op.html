@@ -26,13 +26,34 @@
 
 <body>
 
-
-
     <div class="box1">
         <div class="box2">
 
-            <dir id="real">실제</dir>
+            <dir>
+                <h1>
+                    실제 보상금액 <br>:
+                    <span class="result_span" id="Real_Result">
+                        [결과 값]
+                    </span>
+                    (원)
+                </h1>
+            </dir>
 
+            <!-- 소프트웨어 회복 비용 -->
+            <dir>
+                <!-- 입력 -->
+                <dir>
+                    <!-- 각 항목 -->
+                    <dir>
+                        <span>보상금액 (원)</span>
+                        <input type="text" id='a' onkeyup="Real()" />
+                    </dir>
+                    <dir>
+                        <span>보상받은 인원 (명)</span>
+                        <input type="text" id='b' onkeyup="Real()" />
+                    </dir>
+                </dir>
+            </dir>
             <div id="submit">
                 <input style="zoom:2" type="button" value="건너뛰기" onclick="skip()">
                 <input style="zoom:2" type="button" value="확인버튼" onclick="submit()">
@@ -41,8 +62,7 @@
         </div>
     </div>
 
-    <input style="width: 90%; display: none;" value="0"
-    type="text" id="c" value="ccc">
+    <input style="width: 90%; display: none;" value="0" type="text" id="c" value="ccc">
 
     <script>
 
@@ -70,17 +90,17 @@
             var sender = document.querySelector('#c');
 
             sender.value = getData.val;
-            dataa=sender.value;
+            dataa = sender.value;
 
         }
         function skip() {
-            var data = dataa+"/"+0;
+            var data = dataa + "//0";
             window.open("predict_op.html?val=" + data, "_self");
         }
 
         function submit() {
             if (Real() != null) {
-                var data = dataa + '/' + Real();
+                var data = dataa + '//' + Real();
                 window.open("predict_op.html?val=" + data, "_self");
             }
         }

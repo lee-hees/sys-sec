@@ -30,19 +30,26 @@
 
                 <div id="question2">
                     <div class="choose-show">
-                        <div class="box3">
-                            <input id="bitcoin" style="zoom:2" type="checkbox" onclick="bitcoin()"> 가상화폐</input>
-                        </div>
-                        <div class="box3">
-                            <input style="zoom:2" type="checkbox" onclick="privacy()"> 개인정보</input>
-                        </div>
                         <div class="box4">
-                            <input style="zoom:2" type="checkbox" onclick="fun1()"> 테러</input>
+                            <input style="zoom:2" type="checkbox" onclick="fun1()"> 개인정보</input>
                             <div class="choose-hide">
-                                <div id="list1" class="box4" style="display: none;">
+                                <div id="list11" class="box4" style="display: none;">
+                                    <input id="bitcoin" style="zoom:2" type="checkbox" onclick="bitcoin()"> 가상화폐</input>
+                                </div>
+                                <div id="list12" class="box4" style="display: none;">
+                                    <input style="zoom:2" type="checkbox" onclick="privacy()"> 개인정보</input>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box4">
+                            <input style="zoom:2" type="checkbox" onclick="fun2()"> 테러</input>
+                            <div class="choose-hide">
+                                <div id="list21" class="box4" style="display: none;">
                                     <input style="zoom:2" type="checkbox" onclick="system()"> 시스템</input>
                                 </div>
-                                <div id="list2" class="box4" style="display: none;">
+                                <div id="list22" class="box4" style="display: none;">
                                     <input style="zoom:2" type="checkbox" onclick="site()"> 사이트</input>
 
                                 </div>
@@ -60,21 +67,36 @@
     </div>
 
     <script>
-        var clicked = 1;
+        var clicked1 = 1;
+        var clicked2 = 1;
 
         function fun1() {
-            clicked += 1;
-            if (clicked % 2 == 0) {
-                document.getElementById("list1").style.display = "block";
-                document.getElementById("list2").style.display = "block";
+            clicked1 += 1;
+            if (clicked1 % 2 == 0) {
+                document.getElementById("list11").style.display = "block";
+                document.getElementById("list12").style.display = "block";
             }
             else {
-                document.getElementById("list1").style.display = "none";
-                document.getElementById("list2").style.display = "none";
+                document.getElementById("list11").style.display = "none";
+                document.getElementById("list12").style.display = "none";
+            }
+        }
+        function fun2() {
+            clicked2 += 1;
+            if (clicked2 % 2 == 0) {
+                document.getElementById("list21").style.display = "block";
+                document.getElementById("list22").style.display = "block";
+            }
+            else {
+                document.getElementById("list21").style.display = "none";
+                document.getElementById("list22").style.display = "none";
             }
         }
     </script>
     <script>
+
+        alert("새로고침 하시오");
+
         // 가상화폐
         var bitcoin_check = 0;
         function bitcoin() {

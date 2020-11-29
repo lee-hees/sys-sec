@@ -32,11 +32,39 @@
             <!-- <div style="width: 100%;" id="bitcoin">bitcoin</div> -->
             <div style="width: 100%;">
                 <div id="title">
-                    <h1 class="titleH">비트코인 손실 예측 결과</h1>
+                    <h1 class="titleH">비트코인 손실 가중치 적용</h1>
                     <h3 class="titleH">----</h3>
                 </div>
 
                 <div id="question-result">
+                    <div class="result">
+                        <span class="result-span-weight1">해당 날짜의 1코인(토큰)당 가격 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w1" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">탈취당한 코인 수</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w2" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+
+                    </div>
+                    <br><br>
                     <div class="result">
                         <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
                         <span style="font-weight: bold;font-size: 22px;" class="result-span" id="bitcoin_result">계산 결과
@@ -46,7 +74,6 @@
             </div>
 
             <div id="submit">
-                <div id="button1"><input style="zoom:2;" type="button" value="가중치" onclick="gotoWeight()"></div>
                 <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
                 <div id="button3"><input style="zoom:2;" type="button" value="개인정보" onclick="gotoprivacy()"></div>
                 <div id="button4"><input style="zoom:2;" type="button" value="시스템 마비" onclick="gotosystem()"></div>
@@ -75,6 +102,7 @@
         }
 
         var dataa;
+        var bitcoins;
 
         window.onload = function () {
             var search = window.location.search;
@@ -88,34 +116,32 @@
 
             var selected = arr[0].split("+");
             var bitcoin_arr = arr[eval(selected[0])].split("/");
+            var bitcoin = (bitcoin_arr[0]).split("+");
+            bitcoins = bitcoin;
             // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
             document.getElementById("bitcoin_result").textContent = ": " + addComma(bitcoin_arr[1]) + " (원)";
 
             if (selected[1] == 1) {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "none";
                 document.getElementById("button3").style.display = "block";
                 document.getElementById("button4").style.display = "none";
                 document.getElementById("button5").style.display = "none";
             }
             else if (selected[2] == 1) {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "none";
                 document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "block";
                 document.getElementById("button5").style.display = "none";
             }
             else if (selected[3] == 1) {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "none";
                 document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "none";
                 document.getElementById("button5").style.display = "block";
             }
             else {
-                document.getElementById("button1").style.display = "block";
                 document.getElementById("button2").style.display = "block";
                 document.getElementById("button3").style.display = "none";
                 document.getElementById("button4").style.display = "none";
@@ -123,21 +149,38 @@
             }
         }
 
-        function gotoWeight() {
-            window.open("./weight_op.html?val=" + dataa + "/1", "_self");
+        function AAA() {
+
+            var w1 = $("#w1 option:selected").val();
+            var w2 = $("#w2 option:selected").val();
+            var under = eval(w1 + '+' + w2); // 분모
+
+            var aa = eval(bitcoins[0] + '*' + w1 + '/' + under);
+            var bb = eval(bitcoins[1] + '*' + w2 + '/' + under);
+
+            var Result = eval(eval(aa + '*' + bb) + '*' + 4);
+
+            document.getElementById("bitcoin_result").textContent = ": " + addComma(Result) + " (원)";
+
+            return Result;
         }
+
         function gotoprivacy() {
-            window.open("../privacy/real_op.html?val=" + dataa + "/0", "_self");
+            window.open("../privacy/real_op.html?val=" + dataa+ '/' + AAA(), "_self");
         }
         function gotosystem() {
-            window.open("../system/direct_op.html?val=" + dataa + "/0", "_self");
+            window.open("../system/direct_op.html?val=" + dataa+ '/' + AAA(), "_self");
         }
         function gotosite() {
-            window.open("../site/site_op.html?val=" + dataa + "/0", "_self");
+            window.open("../site/site_op.html?val=" + dataa+ '/' + AAA(), "_self");
         }
         function gotoResult() {
-            window.open("../Result.html?val=" + dataa, "_self");
+            window.open("../Result.html?val=" + dataa + '/' + AAA(), "_self");
         }
+
+
+
+
     </script>
 
 </body>

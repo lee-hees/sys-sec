@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../../css/functions.css">
+    <link rel="stylesheet" href="../../../css/question_box.css">
+
+    <!-- 비용 ',' 찍는 js -->
+    <script src="../../../js/addcomma.js"></script>
+    <!-- 함수 구현 -->
+    <script src="../../../js/bicoin.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#result").load("../../function/system/result.html");
+            //~이렇게 한줄만 해주면 알아서 contents에 testContents.html파일을 넣어 준다.
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box1">
+        <div class="box2">
+
+            <!-- <div style="width: 100%;" id="system">system</div> -->
+            <div style="width: 100%;">
+                <div id="title">
+                    <h1 class="titleH">시스템 마비 손실 가중치 적용</h1>
+                    <h3 class="titleH">----</h3>
+                </div>
+
+                <div id="question-result">
+                    <div class="result">
+                        <span class="result-span-weight1">직접적 피해액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w1" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">잠재적 피해액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w2" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">생산효율 저하로 인한 손실액 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w3" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">복구불능 데이터 가치 (데이터 재생산 비용)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w4" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">매출 이익 손실 비용 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w5" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">예방비용 (원)</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w6" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="result">
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span">총 피해액</span>
+                        <span style="font-weight: bold;font-size: 22px;" class="result-span" id="system_result">계산 결과
+                            표시</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="submit">
+                <div id="button2"><input style="zoom:2;" type="button" value="최종결과" onclick="gotoResult()"></div>
+                <div id="button4"><input style="zoom:2;" type="button" value="시스템 마비" onclick="gotosystem()"></div>
+                <div id="button5"><input style="zoom:2;" type="button" value="사이트 마비" onclick="gotosite()"></div>
+            </div>
+        </div>
+    </div>
+
+    <input style="width: 90%; display: none;" type="text" id="c" value="ccc">
+
+    <script type="text/javascript">
+
+        function _GET(search) {
+            var obj = {};
+            var uri = decodeURI(search);
+            uri = uri.slice(1, uri.length);
+
+            var param = uri.split('&');
+
+            for (var i = 0; i < param.length; i++) {
+                var devide = param[i].split('=');
+                obj[devide[0]] = devide[1];
+            }
+
+            return obj;
+        }
+
+        var dataa;
+        var systems;
+
+        window.onload = function () {
+            var search = window.location.search;
+            var getData = _GET(search);
+            var sender = document.querySelector('#c');
+
+            sender.value = getData.val;
+            dataa = sender.value;
+
+            var arr = sender.value.split("//");  // 구분자를 통해 나뉜 결과는 배열로 저장된다.
+
+            var selected = arr[0].split("+");
+            var system_arr = arr[eval(selected[0] + '+' + selected[1] + '+' + selected[2])].split("/");
+            systems = system_arr;
+            // alert(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+            // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
+
+            document.getElementById("system_result").textContent = ": " + addComma(eval(system_arr[0] + '+' + system_arr[1] + '+' + system_arr[2] + '+' + system_arr[3] + '+' + system_arr[4] + '+' + system_arr[5])) + " (원)";
+
+            if (selected[3] == 1) {
+                document.getElementById("button2").style.display = "none";
+                document.getElementById("button4").style.display = "none";
+                document.getElementById("button5").style.display = "block";
+            }
+            else {
+                document.getElementById("button2").style.display = "block";
+                document.getElementById("button4").style.display = "none";
+                document.getElementById("button5").style.display = "none";
+            }
+        }
+
+        function AAA() {
+
+            var w1 = $("#w1 option:selected").val();
+            var w2 = $("#w2 option:selected").val();
+            var w3 = $("#w3 option:selected").val();
+            var w4 = $("#w4 option:selected").val();
+            var w5 = $("#w5 option:selected").val();
+            var w6 = $("#w6 option:selected").val();
+            var under = eval(w1 + '+' + w2 + '+' + w3 + '+' + w4 + '+' + w5 + '+' + w6); // 분모
+
+            var aa = eval(systems[0] + '*' + w1 + '/' + under);
+            var bb = eval(systems[1] + '*' + w2 + '/' + under);
+            var cc = eval(systems[2] + '*' + w3 + '/' + under);
+            var dd = eval(systems[3] + '*' + w4 + '/' + under);
+            var ee = eval(systems[4] + '*' + w5 + '/' + under);
+            var ff = eval(systems[5] + '*' + w6 + '/' + under);
+
+            var Result = eval(eval(aa + '+' + bb + '+' + cc + '+' + dd + '+' + ee + '+' + ff) + '*' + 6);
+
+            document.getElementById("system_result").textContent = ": " + addComma(Result) + " (원)";
+
+            return Result;
+        }
+
+        function gotosystem() {
+            window.open("../system/direct_op.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+        function gotosite() {
+            window.open("../site/site_op.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+        function gotoResult() {
+            window.open("../Result.html?val=" + dataa + '/' + AAA(), "_self");
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
