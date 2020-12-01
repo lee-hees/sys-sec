@@ -32,13 +32,13 @@
             <!-- <div style="width: 100%;" id="site">site</div> -->
             <div style="width: 100%;">
                 <div id="title">
-                    <h1 class="titleH">개인정보 손실 가중치 적용</h1>
+                    <h1 class="titleH">사이트 마비 손실 가중치 적용</h1>
                     <h3 class="titleH">----</h3>
                 </div>
 
                 <div id="question-result">
                     <div class="result">
-                        <span class="result-span-weight1">실제 보상금액 (원)</span>
+                        <span class="result-span-weight1">추정 GDP</span>
                         <form class="result-span-weight2">
                             <select name="" id="w1" onchange="AAA()">
                                 <option>가중치를 선택하시오</option>
@@ -51,7 +51,7 @@
                         </form>
                     </div>
                     <div class="result">
-                        <span class="result-span-weight1">추정 보상금액 (원)</span>
+                        <span class="result-span-weight1">연간 근무 시간</span>
                         <form class="result-span-weight2">
                             <select name="" id="w2" onchange="AAA()">
                                 <option>가중치를 선택하시오</option>
@@ -62,7 +62,19 @@
                                 <option value="5">Very High</option>
                             </select>
                         </form>
-
+                    </div>
+                    <div class="result">
+                        <span class="result-span-weight1">피해 시간</span>
+                        <form class="result-span-weight2">
+                            <select name="" id="w3" onchange="AAA()">
+                                <option>가중치를 선택하시오</option>
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Mideum</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </form>
                     </div>
                     <br><br>
                     <div class="result">
@@ -135,12 +147,18 @@
 
             var w1 = $("#w1 option:selected").val();
             var w2 = $("#w2 option:selected").val();
-            var under = eval(w1 + '+' + w2); // 분모
+            var w3 = $("#w3 option:selected").val();
+            var under = eval(w1 + '+' + w2 + '+' + w3); // 분모
 
             var aa = eval(sites[0] + '*' + w1 + '/' + under);
             var bb = eval(sites[1] + '*' + w2 + '/' + under);
+            var cc = eval(sites[2] + '*' + w3 + '/' + under);
 
-            var Result = eval(eval(aa + '+' + bb) + '*' + 2);
+            var Result = eval(
+                eval(eval(aa + '+' + bb) +
+                    '*' + 109 + '/' + 1000 +
+                    '*' + cc)
+                + '*' + 9);
 
             document.getElementById("site_result").textContent = ": " + addComma(Result) + " (원)";
 
