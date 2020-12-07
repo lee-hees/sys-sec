@@ -133,7 +133,7 @@
             // console.log(arr);   // ["aa", "bb", "cc", "dd", "ee"]
 
             document.getElementById("site_result").textContent = ": " + addComma(
-                eval(eval(site[0] + '+' + site[1]) + '*' + 109 + '/' + 1000 + '*' + site[2])
+                eval(eval(site[0] + '*' + site[1]) + '*' + 109 + '/' + 1000 + '*' + site[2])
             ) + " (원)";
 
 
@@ -155,10 +155,10 @@
             var cc = eval(sites[2] + '*' + w3 + '/' + under);
 
             var Result = eval(
-                eval(eval(aa + '+' + bb) +
+                eval(eval(aa + '*' + bb) +
                     '*' + 109 + '/' + 1000 +
                     '*' + cc)
-                + '*' + 9);
+                + '*' + 27);
 
             document.getElementById("site_result").textContent = ": " + addComma(Result) + " (원)";
 
@@ -177,12 +177,6 @@
         function gotoResult() {
             window.open("../Result.html?val=" + dataa + '/' + AAA(), "_self");
         }
-
-
-
-
     </script>
-
 </body>
-
 </html>

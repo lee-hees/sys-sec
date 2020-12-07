@@ -23,7 +23,7 @@ function Site() // 잠재적 피해
           document.getElementById('DamageTime').value;
 
      var RESULT = Math.round(eval(eval(GDP +
-          '+' + RTime) +
+          '*' + RTime) +
           '*' + 109 + '/' + 1000 +
           '*' + DamageTime
      ));
